@@ -1,0 +1,38 @@
+<p>
+  <strong>Name:</strong> <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong> <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong> <%= number_to_currency(@product.price) %>
+</p>
+
+<p>
+  <strong>Stock Quantity:</strong> <%= @product.stock_quantity %>
+</p>
+
+<p>
+  <strong>Created At:</strong> <%= @product.created_at.strftime("%B %d, %Y") %>
+</p>
+
+<p>
+  <strong>Updated At:</strong> <%= @product.updated_at.strftime("%B %d, %Y") %>
+</p>
+
+<p>
+  <strong>Categories:</strong> <%= @product.categories.map(&:name).join(", ") %>
+</p>
+
+<p>
+  <strong>Images:</strong><br>
+  <% if @product.images.attached? %>
+    <% @product.images.each do |img| %>
+      <%= image_tag img, size: "150x150" %>
+    <% end %>
+  <% else %>
+    No images available
+  <% end %>
+</p>
